@@ -111,11 +111,11 @@ function fn_writeForm() {
 	</table>
 	
 	<!-- 페이지 네비게이션 -->
-	<%-- <div style="text-align: center;">
+	<div style="text-align: center;">
 		<ul class="pagination">
 			${pagingUtil.pageHtml}
 		</ul>
-	</div> --%>
+	</div>
 	
 </div>
 

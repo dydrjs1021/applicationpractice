@@ -106,7 +106,7 @@ public class BoardController {
 		}else {
 			// 로그인 사용자 정보
 			board.setBo_writer(member.getMem_id());
-			//board.setBo_writer_name(member.getMem_name());
+			board.setBo_writer_name(member.getMem_name());
 		}
 		
 		model.addAttribute("board", board);

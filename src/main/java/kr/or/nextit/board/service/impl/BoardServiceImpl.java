@@ -16,44 +16,50 @@ import kr.or.nextit.mybatis.MybatisSqlSessionFactory;
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
-	BoardMapper boardmapper;
+	BoardMapper boardMapper;
 
 	SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
 	
 	@Override
 	public int getBoardCount(Map<String, Object> paramMap) throws Exception {
 		
-		return boardmapper.selectBoardCount(paramMap);
+		return boardMapper.selectBoardCount(paramMap);
 	}
 
 	@Override
 	public List<Board> getBoardList(Map<String, Object> paramMap) throws Exception {
 		
-		return boardmapper.selectBoardList(paramMap);
+		return boardMapper.selectBoardList(paramMap);
 	}
 
 	@Override
 	public Board getBoard(int bo_seq_no) throws Exception {
 		
-		return boardmapper.selectBoard(bo_seq_no);
+		boardMapper.updateHitCnt(bo_seq_no);
+		
+		Board board = boardMapper.selectBoard(bo_seq_no);
+		
+		return board;
 	}
 
 	@Override
 	public int insertBoard(Board board) throws Exception {
 		
-		return boardmapper.insertBoard(board);
+		int updCnt = boardMapper.insertBoard(board);
+		
+		return updCnt;
 	}
 
 	@Override
 	public int updateBoard(Board board) throws Exception {
 		
-		return boardmapper.updateBoard(board);
+		return boardMapper.updateBoard(board);
 	}
 
 	@Override
 	public int deleteBoard(Map<String, Object> paramMap) throws Exception {
 		
-		return boardmapper.deleteBoard(paramMap);
+		return boardMapper.deleteBoard(paramMap);
 	}
 }
 
